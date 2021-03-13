@@ -43,8 +43,8 @@ app.post("/spidertron/new", (req, res) => {
 // all spidys
 app.get("/spidertron", async (req, res) => {
     let pl = []
-    const ss = db.collection(process.env.COLLECTION).get()
-    await ss.forEach((doc) => {
+    const ss = await db.collection(process.env.COLLECTION).get()
+    ss.forEach((doc) => {
         pl.push(doc)
     })
     res.send(pl)
