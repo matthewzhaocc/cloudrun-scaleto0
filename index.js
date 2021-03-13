@@ -1,7 +1,6 @@
 const express = require("express")
 const morgan = require("morgan")
 const cors = require("cors")
-const bodyParser = require("body-parser")
 // gcp firestore
 const admin = require("firebase-admin")
 admin.initializeApp({
@@ -11,6 +10,7 @@ admin.initializeApp({
 const db = admin.firestore()
 const docRef = db.collection(process.env.COLLECTION).doc(process.env.DOC)
 let app = express()
+app.use(express.json())
 // logging
 app.use(morgan("common"))
 app.use(cors())
