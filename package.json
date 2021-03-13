@@ -1,0 +1,28 @@
+{
+  "name": "cloudrun-scaleto0",
+  "version": "1.0.0",
+  "description": "a cloudrun scale to 0 project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "serve": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewzhaocc/cloudrun-scaleto0.git"
+  },
+  "keywords": [
+    "cloudrun"
+  ],
+  "author": "Matthew Zhao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthewzhaocc/cloudrun-scaleto0/issues"
+  },
+  "homepage": "https://github.com/matthewzhaocc/cloudrun-scaleto0#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}
