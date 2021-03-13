@@ -59,6 +59,7 @@ app.post("/spidertron/update", (req, res) => {
     docRef.set({
         name: name
     })
+    res.send("mission complete")
 })  
 // start listening
 app.listen(process.env.PORT || 3000, function() {
