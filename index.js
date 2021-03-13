@@ -14,7 +14,6 @@ let app = express()
 // logging
 app.use(morgan("common"))
 app.use(cors())
-app.use(bodyParser.json( {} ))
 // index route return hello
 app.get("/", (req, res) => {
     res.setHeader("Content-Type", "application/json")
