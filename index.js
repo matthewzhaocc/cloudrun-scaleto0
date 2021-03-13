@@ -32,7 +32,7 @@ app.get("/health", (req, res) => {
 // new spidertron
 app.post("/spidertron/new", (req, res) => {
     let name = req.body.name
-    let docname = uuidv4
+    let docname = uuidv4()
     const docRef = db.collection(process.env.COLLECTION).doc(docname)
     docRef.set({
         name: name
@@ -55,7 +55,7 @@ app.get("/spidertron", (req, res) => {
 app.post("/spidertron/update", (req, res) => {
     let name = req.body.name
     let uuid = req.body.uuid
-    
+
 })
 // start listening
 app.listen(process.env.PORT || 3000, function() {
