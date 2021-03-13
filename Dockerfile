@@ -6,4 +6,4 @@ COPY . .
 
 RUN npm ci
 
-CMD ["npm", "run"]
+CMD ["npm", "run", "serve"]
