@@ -3,12 +3,15 @@ const morgan = require("morgan")
 const cors = require("cors")
 // gcp firestore
 const admin = require("firebase-admin")
+// generate uuids
+import {v4 as uuidv4} from 'uuid';
 admin.initializeApp({
     credential: admin.credential.applicationDefault()
 })
+
+
 // le database
 const db = admin.firestore()
-const docRef = db.collection(process.env.COLLECTION).doc(process.env.DOC)
 let app = express()
 app.use(express.json())
 // logging
@@ -29,6 +32,7 @@ app.get("/health", (req, res) => {
 // new spidertron
 app.post("/spidertron/new", (req, res) => {
     let name = req.body.name
+    const docRef = db.collection(process.env.COLLECTION).doc(uuidv4())
     docRef.set({
         name: name
     })
@@ -38,7 +42,7 @@ app.post("/spidertron/new", (req, res) => {
 // all spidys
 app.get("/spidertron", (req, res) => {
     let pl = []
-    const ss = docRef.get()
+    const ss = db.collection(process.env.COLLECTION).get()
     ss.forEach((doc) => {
         pl.push(doc)
     })
