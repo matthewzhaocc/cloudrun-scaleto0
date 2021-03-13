@@ -4,7 +4,7 @@ const cors = require("cors")
 // gcp firestore
 const admin = require("firebase-admin")
 // generate uuids
-import {v4 as uuidv4} from 'uuid';
+const  uuidv4 = require("uuid").v4;
 admin.initializeApp({
     credential: admin.credential.applicationDefault()
 })
@@ -32,11 +32,12 @@ app.get("/health", (req, res) => {
 // new spidertron
 app.post("/spidertron/new", (req, res) => {
     let name = req.body.name
-    const docRef = db.collection(process.env.COLLECTION).doc(uuidv4())
+    let docname = uuidv4
+    const docRef = db.collection(process.env.COLLECTION).doc(docname)
     docRef.set({
         name: name
     })
-    res.send("success")
+    res.send(docname)
 })
 
 // all spidys
@@ -48,6 +49,13 @@ app.get("/spidertron", (req, res) => {
     })
     res.send(pl)
     res.setHeader("Content-Type", "text/plain")
+})
+
+// update spidys
+app.post("/spidertron/update", (req, res) => {
+    let name = req.body.name
+    let uuid = req.body.uuid
+    
 })
 // start listening
 app.listen(process.env.PORT || 3000, function() {
