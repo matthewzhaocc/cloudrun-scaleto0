@@ -18,6 +18,6 @@ app.get("/health", (req, res) => {
     res.send(JSON.stringify({"status": "up"}))
 })
 // start listening
-app.listen(process.env.PORT | 3000, function() {
-    console.log(`application started running on :${process.env.PORT | 3000}`)
+app.listen(process.env.PORT || 3000, function() {
+    console.log(`application started running on :${process.env.PORT || 3000}`)
 })
