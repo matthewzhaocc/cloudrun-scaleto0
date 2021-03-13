@@ -55,8 +55,11 @@ app.get("/spidertron", async (req, res) => {
 app.post("/spidertron/update", (req, res) => {
     let name = req.body.name
     let uuid = req.body.uuid
-
-})
+    const docRef = db.collection(process.env.COLLECTION).doc(uuid)
+    docRef.set({
+        name: name
+    })
+})  
 // start listening
 app.listen(process.env.PORT || 3000, function() {
     console.log(`application started running on :${process.env.PORT || 3000}`)
